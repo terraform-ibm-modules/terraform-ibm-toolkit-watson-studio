@@ -25,3 +25,9 @@ variable "plan" {
   description = "The type of plan the service instance should run under (standard-v1, enterprise-v2)"
   default     = "standard-v1"
 }
+
+variable "label" {
+  type        = string
+  description = "The label of the resource used to build the name along with the name_prefix."
+  default     = "studio"
+}
