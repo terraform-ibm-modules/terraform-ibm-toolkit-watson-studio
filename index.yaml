@@ -1,0 +1,71 @@
+name: ibm-watson-studio
+type: terraform
+description: Provisions a managed instance of Watson Studio in an IBM Cloud account
+tags:
+  - watson
+  - studio
+  - ibm cloud
+versions:
+  - platforms: []
+    providers:
+      - name: ibm
+        source: ibm-cloud/ibm
+    dependencies:
+      - id: resource_group
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+            version: '>= 2.1.0'
+    variables:
+      - name: resource_group_name
+        type: string
+        description: Resource group where the cluster has been provisioned.
+        moduleRef:
+          id: resource_group
+          output: name
+      - name: resource_location
+        type: string
+        description: Geographic location of the resource (e.g. us-south, us-east)
+        alias: region
+        scope: global
+      - name: tags
+        type: list(string)
+        description: Tags that should be applied to the service
+        default: []
+      - name: name_prefix
+        type: string
+        description: >-
+          The prefix name for the service. If not provided it will default to
+          the resource group name
+        default: ''
+        scope: global
+      - name: plan
+        type: string
+        description: >-
+          The type of plan the service instance should run under (lite,
+          professional-v1)
+        default: professional-v1
+      - name: name
+        type: string
+        description: The name of the Watson Studio instance that will be provisioned
+        default: ''
+      - name: label
+        type: string
+        description: >-
+          The label of the resource used to build the name along with the
+          name_prefix.
+        default: studio
+    version: v1.2.0
+    outputs:
+      - name: id
+        description: The id of the provisioned redis instance
+      - name: name
+        description: The name of the provisioned redis instance
+      - name: crn
+        description: The id of the provisioned redis instance
+      - name: location
+        description: The location of the provisioned redis instance
+      - name: service
+        description: The name of the key provisioned for the redis instance
+      - name: label
+        description: The label for the redis instance
+id: github.com/terraform-ibm-modules/terraform-ibm-toolkit-watson-studio
