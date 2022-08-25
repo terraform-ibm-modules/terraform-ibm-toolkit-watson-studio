@@ -19,4 +19,5 @@ jobs:
   release:
     needs: [verify, verifyMetadata]
     uses: cloud-native-toolkit/action-workflows/.github/workflows/release-module.yaml@v1
-    secrets: inherit
+    secrets:
+      TOKEN: ${{ secrets.TOKEN }}
