@@ -22,6 +22,18 @@ variable "name_prefix" {
 
 variable "plan" {
   type        = string
-  description = "The type of plan the service instance should run under (standard-v1, enterprise-v2)"
-  default     = "standard-v1"
+  description = "The type of plan the service instance should run under (lite, professional-v1)"
+  default     = "professional-v1"
+}
+
+variable "name" {
+  type        = string
+  description = "The name of the Watson Studio instance that will be provisioned"
+  default     = ""
+}
+
+variable "label" {
+  type        = string
+  description = "The label of the resource used to build the name along with the name_prefix."
+  default     = "studio"
 }
