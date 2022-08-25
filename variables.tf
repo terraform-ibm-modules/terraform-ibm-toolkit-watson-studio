@@ -26,6 +26,12 @@ variable "plan" {
   default     = "standard-v1"
 }
 
+variable "name" {
+  type        = string
+  description = "The name of the Watson Studio instance that will be provisioned"
+  default     = ""
+}
+
 variable "label" {
   type        = string
   description = "The label of the resource used to build the name along with the name_prefix."
